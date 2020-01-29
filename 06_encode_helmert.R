@@ -8,22 +8,17 @@ helmert <- function(n) {
   t(apply(m, 1, rev))
 }
 
-encode_helmert <- function(df, var, order = NULL) {
+encode_helmert <- function(df, var) {
   x <- df[[var]]
-  if (is.null(order)) {
-    order <- unique(x)
-  }
-  x <- factor(x, levels = order, exclude = NULL)
+  x <- factor(x, exclude = NULL)
   d <- as.data.frame(helmert(length(levels(x))))
-  d[[var]] <- rev(order)
+  d[[var]] <- rev(unique(x))
   names(d) <- c(paste0(var, 1:(length(levels(x)) - 1)), var)
   d
 }
 
-d <- encode_helmert(df, "hml", order = c(NA, "Low", "Medium", "High"))
-d
 d <- encode_helmert(df, "hml")
 d
-
-# Currently data.table has issues merging if key has missing values
-new_df <- merge.data.frame(df, d, by = "hml", all.x = TRUE)
+df[1, "hml"] <- NA_character_
+d <- encode_helmert(df, "hml")
+d
