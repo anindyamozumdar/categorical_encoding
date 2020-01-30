@@ -10,10 +10,11 @@ helmert <- function(n) {
 
 encode_helmert <- function(df, var) {
   x <- df[[var]]
-  x <- factor(x, exclude = NULL)
-  d <- as.data.frame(helmert(length(levels(x))))
-  d[[var]] <- rev(unique(x))
-  names(d) <- c(paste0(var, 1:(length(levels(x)) - 1)), var)
+  x <- unique(x)
+  n <- length(x)
+  d <- as.data.frame(helmert(n))
+  d[[var]] <- rev(x)
+  names(d) <- c(paste0(var, 1:(n-1)), var)
   d
 }
 
