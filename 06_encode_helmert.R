@@ -23,3 +23,7 @@ d
 df[1, "hml"] <- NA_character_
 d <- encode_helmert(df, "hml")
 d
+
+d <- data.frame(v = sample(c("a", "b", "c", "d", "e"), 100, replace = TRUE))
+d <- encode_helmert(d, "v")
+d
