@@ -11,7 +11,7 @@ encode_leave_one_out <- function(x, y, sigma = NULL) {
     mean(yloo, na.rm = TRUE)
   }, numeric(1))
   if (!is.null(sigma)) {
-    x2 <- x2 + rnorm(n, mean = 0, sd = sigma)
+    x2 <- x2 * rnorm(n, mean = 1, sd = sigma)
   }
   x2
 }
