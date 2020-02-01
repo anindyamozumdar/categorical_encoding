@@ -10,7 +10,7 @@ encode_woe <- function(x, y, sigma = NULL) {
   l <- l[x]
   l[is.na(l)] <- m
   if (!is.null(sigma)) {
-    l <- l + rnorm(length(l), mean = 0, sd = sigma)
+    l <- l * rnorm(length(l), mean = 1, sd = sigma)
   }
   l
 }
