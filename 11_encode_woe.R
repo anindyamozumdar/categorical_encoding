@@ -22,3 +22,5 @@ new_df[["hml_encoded"]] <- encode_woe(df[["hml"]], df[["target"]])
 new_df[["hml_encoded2"]] <- encode_woe(df[["hml"]], df[["target"]],
                                        sigma = 0.05)
 new_df[["city_encoded"]] <- encode_woe(df[["city"]], df[["target"]])
+
+# https://www.listendata.com/2019/08/WOE-IV-Continuous-Dependent.html
